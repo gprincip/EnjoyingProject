@@ -26,8 +26,10 @@ public class MarkoController {
 		
 		//studentRepository.save(new Student("Pera","12345"));
 		//System.out.println(studentRepository.findAll());
+		radnik r = new radnik("pera");
+		r.setStudent(new Student("Laza","555555"));
 		
-		radnikRepository.save(new radnik(2,"asdfg"));
+		radnikRepository.save(r);
 		System.out.println(radnikRepository.findAll());
 		
 		model.addAttribute("message","Hello from Marko!");

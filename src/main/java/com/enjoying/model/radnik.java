@@ -1,18 +1,26 @@
 package com.enjoying.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class radnik {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column
 	private String name;
 
+	@OneToOne(cascade=CascadeType.ALL)
+	private Student student;
+	
 	public int getId() {
 		return id;
 	}
@@ -29,6 +37,10 @@ public class radnik {
 		this.name = name;
 	}
 
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	
 	public radnik(int id, String name) {
 		super();
 		this.id = id;
@@ -45,7 +57,7 @@ public class radnik {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return String.format("Student [id=%s, name=%s]", id, name);
+		return String.format("Radnik [id=%s, name=%s] " + student.toString(), id, name);
 
 	}
 }
