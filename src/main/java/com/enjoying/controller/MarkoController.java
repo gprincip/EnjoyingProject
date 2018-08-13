@@ -6,8 +6,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.enjoying.jpa.RadnikRepository;
 import com.enjoying.jpa.StudentRepository;
 import com.enjoying.model.Student;
+import com.enjoying.model.radnik;
 
 @Controller
 public class MarkoController {
@@ -15,12 +17,18 @@ public class MarkoController {
 	@Autowired
 	StudentRepository studentRepository;
 	
+	@Autowired
+	RadnikRepository radnikRepository;
+	
 	@RequestMapping(value="/helloMarko", method=RequestMethod.GET)
 	public String sayHelloMarko(ModelMap model)
 	{	
 		
-		studentRepository.save(new Student("Pera","12345"));
-		System.out.println(studentRepository.findAll());
+		//studentRepository.save(new Student("Pera","12345"));
+		//System.out.println(studentRepository.findAll());
+		
+		radnikRepository.save(new radnik(2,"asdfg"));
+		System.out.println(radnikRepository.findAll());
 		
 		model.addAttribute("message","Hello from Marko!");
 		return "helloMarko";
