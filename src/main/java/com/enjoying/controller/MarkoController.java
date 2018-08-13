@@ -21,16 +21,18 @@ public class MarkoController {
 	RadnikRepository radnikRepository;
 	
 	@RequestMapping(value="/helloMarko", method=RequestMethod.GET)
-	public String sayHelloMarko(ModelMap model)
-	{	
-		
-		//studentRepository.save(new Student("Pera","12345"));
-		//System.out.println(studentRepository.findAll());
-		
-		radnikRepository.save(new radnik(2,"Gavrilo"));
-		System.out.println(radnikRepository.findAll());
-		
-		model.addAttribute("message","Hello from Marko!");
-		return "helloMarko";
-	}
+	 public String sayHelloMarko(ModelMap model)
+	 { 
+	  
+	  //studentRepository.save(new Student("Pera","12345"));
+	  //System.out.println(studentRepository.findAll());
+	  radnik r = new radnik("pera");
+	  r.setStudent(new Student("Laza","555555"));
+	  
+	  radnikRepository.save(r);
+	  System.out.println(radnikRepository.findAll());
+	  
+	  model.addAttribute("message","Hello from Marko!");
+	  return "helloMarko";
+	 }
 }
